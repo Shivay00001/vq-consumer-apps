@@ -1,0 +1,67 @@
+/* VQ Transit — mobile-first styles. Self-contained, no frameworks. */
+
+:root{
+  --brand:#1a73c8; --brand-dark:#125aa3; --brand-soft:#e8f1fb;
+  --ink:#1b2430; --muted:#68727f; --line:#dfe7ef; --bg:#f6f9fc; --card:#fff;
+  --amber:#8a6d00; --amber-bg:#fff8e1; --radius:14px;
+  --shadow:0 2px 10px rgba(20,50,90,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+h2 small{font-weight:400;color:var(--muted);font-size:.65em}
+h2{font-size:1.25rem;margin:.4rem 0 .8rem}
+h3{font-size:1.05rem}
+.muted{color:var(--muted);font-size:.88rem}
+
+.app-header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.header-inner{max-width:960px;margin:0 auto;padding:.7rem 1rem}
+.brand{display:flex;gap:.6rem;align-items:center}
+.brand-icon{font-size:1.8rem}
+.brand strong{display:block;font-size:1.15rem}
+.brand small{color:var(--muted)}
+.phase2-banner{margin:0;padding:.6rem 1rem;background:var(--amber-bg);color:var(--amber);font-size:.84rem;border-top:1px dashed #e8d48a;text-align:center}
+
+.tabs{display:flex;gap:.4rem;overflow-x:auto;padding:.6rem 1rem;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:57px;z-index:15;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.5rem .95rem;font-size:.9rem;cursor:pointer;white-space:nowrap}
+.tab.active{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}
+
+.wrap{max-width:960px;margin:0 auto;padding:1rem}
+.tabpanel{display:none}
+.tabpanel.active{display:block}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.8rem}
+@media(max-width:480px){.form-grid{grid-template-columns:1fr}}
+label{display:grid;gap:.35rem;font-size:.9rem;font-weight:600}
+select,input{padding:.75rem;border:1px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff}
+.block-label{margin-bottom:.8rem}
+
+.btn{border:none;border-radius:12px;padding:.8rem 1.2rem;font-size:1rem;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--brand);color:#fff;width:100%}
+.btn.primary:hover{background:var(--brand-dark)}
+
+.results{display:grid;gap:.7rem;margin-top:1rem}
+.result-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:.9rem}
+.result-card .svc{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
+.result-card .svc strong{font-size:1rem}
+.badge{background:var(--brand-soft);color:var(--brand-dark);border-radius:6px;padding:.15rem .5rem;font-size:.75rem;font-weight:700}
+.result-card .times{font-size:1.05rem;margin:.4rem 0;font-weight:600}
+.result-card .sub{color:var(--muted);font-size:.85rem}
+.stops-table{width:100%;border-collapse:collapse;margin-top:.6rem;font-size:.88rem}
+.stops-table th,.stops-table td{text-align:left;padding:.4rem .3rem;border-bottom:1px solid var(--line)}
+.stops-table th{color:var(--muted);font-weight:600;font-size:.78rem;text-transform:uppercase}
+
+.fare-result{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1rem;margin-top:.8rem;font-size:1.05rem}
+.fare-result strong{color:var(--brand-dark);font-size:1.3rem}
+
+.dep-row{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem}
+.dep-row .t{font-weight:700;font-size:1.05rem}
+.dep-row .in{color:var(--brand-dark);font-size:.88rem;font-weight:600}
+
+.phase2-note{background:#fff;border:1px dashed var(--brand);border-radius:var(--radius);padding:1rem;margin-top:1.4rem;font-size:.9rem}
+.phase2-note ul{padding-left:1.2rem;margin:.5rem 0}
+.phase2-note li{margin-bottom:.4rem}
+
+.ad-slot{margin:.9rem 0;min-height:70px;border:1px dashed #b9c4d0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#8a95a5;font-size:.8rem;background:#f1f4f7}
+.app-footer{text-align:center;color:var(--muted);font-size:.8rem;padding:1.5rem 1rem}
+.empty{color:var(--muted);text-align:center;padding:1.4rem}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VQ Transit — Demo Timetables (Bus & Train)</title>
+<meta name="description" content="VQ Transit demo: search sample bus and train timetables, fare calculator and next departures from static data. No live tracking.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand"><span class="brand-icon">🚆</span><div><strong>VQ Transit</strong><small>demo timetables</small></div></div>
+  </div>
+  <p class="phase2-banner">📡 <strong>Live tracking is Phase 2.</strong> This demo shows <strong>static sample timetables only — no live bus/train positions.</strong> We never fake live data. See README for the API research.</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Transit tools">
+  <button class="tab active" data-tab="search" role="tab">🔍 Find routes</button>
+  <button class="tab" data-tab="next" role="tab">⏱ Next departures</button>
+  <button class="tab" data-tab="fare" role="tab">💰 Fare calculator</button>
+  <button class="tab" data-tab="schedule" role="tab">🗓 Timetables</button>
+</nav>
+
+<main class="wrap">
+  <!-- AdSense paste point: transit tools, top -->
+  <div class="ad-slot" data-ad="transit-tools-top" role="complementary" aria-label="Advertisement">
+    <!-- PASTE YOUR ADSENSE AD UNIT CODE HERE (transit tools top) -->
+    <span>Advertisement</span>
+  </div>
+
+  <section id="tab-search" class="tabpanel active" role="tabpanel">
+    <h2>Find routes <small>(static demo timetable)</small></h2>
+    <div class="form-grid">
+      <label>From
+        <select id="fromSel"></select>
+      </label>
+      <label>To
+        <select id="toSel"></select>
+      </label>
+    </div>
+    <button id="searchBtn" class="btn primary">Search demo routes</button>
+    <div id="searchResults" class="results"></div>
+  </section>
+
+  <section id="tab-next" class="tabpanel" role="tabpanel">
+    <h2>Next departures <small>(from static timetable, device clock)</small></h2>
+    <p class="muted">Computed from the sample timetable against your device's current time — <strong>not live data</strong>.</p>
+    <label class="block-label">Station / stop
+      <select id="stationSel"></select>
+    </label>
+    <div id="nextResults" class="results"></div>
+  </section>
+
+  <section id="tab-fare" class="tabpanel" role="tabpanel">
+    <h2>Fare calculator <small>(demo fares)</small></h2>
+    <div class="form-grid">
+      <label>Service
+        <select id="fareService"></select>
+      </label>
+      <label>Class / type
+        <select id="fareClass"></select>
+      </label>
+    </div>
+    <div id="fareResult" class="fare-result muted">Select a service to see its demo fare.</div>
+    <p class="muted">Fares are fictional demo values, not official tariffs. Check operator sites for real fares.</p>
+  </section>
+
+  <section id="tab-schedule" class="tabpanel" role="tabpanel">
+    <h2>Timetables <small>(sample data)</small></h2>
+    <label class="block-label">Train
+      <select id="trainSel"></select>
+    </label>
+    <div id="trainSchedule" class="results"></div>
+    <label class="block-label" style="margin-top:1.2rem">Bus route
+      <select id="busSel"></select>
+    </label>
+    <div id="busSchedule" class="results"></div>
+  </section>
+
+  <section class="phase2-note">
+    <h3>📡 Phase 2: live tracking</h3>
+    <p>We researched free public APIs for Indian bus/train live tracking (Sept 2026). <strong>None is reliably free without an API key.</strong> So this build ships timetable tools only and never shows fake positions. When the owner adds a key, live data can be wired as an optional enhancement with graceful fallback to this static data.</p>
+    <ul>
+      <li><strong>RailRadar</strong> (railradar.in/docs) — free tier 1,000 req/month, <em>requires API key</em> — candidate for train live board.</li>
+      <li><strong>Delhi Open Transit Data</strong> (otd.delhi.gov.in) — static GTFS public, <em>realtime needs a registered private key</em>.</li>
+      <li><strong>BMTC GTFS</strong> — static via community mirrors; realtime not reliably open.</li>
+      <li><strong>NTES / Indian Railways</strong> — authoritative, but <em>no public API</em> (official site only).</li>
+    </ul>
+    <p class="muted">Meanwhile, for real live train status use the official <a href="https://enquiry.indianrail.gov.in" rel="noopener">NTES site</a>.</p>
+  </section>
+
+  <!-- AdSense paste point: transit tools, bottom -->
+  <div class="ad-slot" data-ad="transit-tools-bottom" role="complementary" aria-label="Advertisement">
+    <!-- PASTE YOUR ADSENSE AD UNIT CODE HERE (transit tools bottom) -->
+    <span>Advertisement</span>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <p>VQ Transit · prototype · All routes, times and fares are fictional sample data. Not for real journey planning.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VQ Grocery — Demo Storefront</title>
+<meta name="description" content="VQ Grocery demo storefront. Browse a demo catalog, try the cart and checkout flow. No real store, inventory or payments.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand"><span class="brand-icon">🥦</span><div><strong>VQ Grocery</strong><small>demo storefront</small></div></div>
+    <button id="cartBtn" class="cart-btn" aria-label="Open cart">🛒 <span id="cartCount" class="cart-count">0</span></button>
+  </div>
+  <p class="demo-banner">🧪 Demo build — catalog, cart &amp; checkout are real UI, but there is <strong>no real store, no real inventory, and no real payment</strong>. Phase&nbsp;2 will add a backend.</p>
+</header>
+
+<main id="view-shop" class="view active">
+  <section class="search-bar">
+    <input id="searchInput" type="search" placeholder="Search demo products… e.g. milk, mango" aria-label="Search products">
+  </section>
+
+  <!-- AdSense paste point: listing page, above category chips -->
+  <div class="ad-slot" data-ad="grocery-listing-top" role="complementary" aria-label="Advertisement">
+    <!-- PASTE YOUR ADSENSE AD UNIT CODE HERE (grocery listing top) -->
+    <span>Advertisement</span>
+  </div>
+
+  <nav id="categoryChips" class="chips" aria-label="Categories"></nav>
+
+  <section id="offers" class="offers" aria-label="Demo offers"></section>
+
+  <section id="productGrid" class="product-grid" aria-live="polite"></section>
+  <p id="emptyState" class="empty-state" hidden>No demo products match your search.</p>
+
+  <!-- AdSense paste point: listing page, below product grid -->
+  <div class="ad-slot" data-ad="grocery-listing-bottom" role="complementary" aria-label="Advertisement">
+    <!-- PASTE YOUR ADSENSE AD UNIT CODE HERE (grocery listing bottom) -->
+    <span>Advertisement</span>
+  </div>
+</main>
+
+<main id="view-cart" class="view">
+  <h2>Your Cart <small>(demo)</small></h2>
+  <div id="cartItems"></div>
+  <div id="cartSummary" class="cart-summary"></div>
+  <div class="row-actions">
+    <button id="backToShop" class="btn ghost">← Continue shopping</button>
+    <button id="goCheckout" class="btn primary">Checkout →</button>
+  </div>
+</main>
+
+<main id="view-checkout" class="view">
+  <h2>Checkout <small>(demo — no real payment)</small></h2>
+  <form id="checkoutForm" class="form" novalidate>
+    <label>Full name<input name="name" required placeholder="e.g. Shivay" autocomplete="name"></label>
+    <label>Phone<input name="phone" required inputmode="tel" placeholder="10-digit mobile" pattern="[0-9]{10}" autocomplete="tel"></label>
+    <label>Delivery address<textarea name="address" required rows="3" placeholder="House no, street, area, city, PIN"></textarea></label>
+    <fieldset class="pay-choice">
+      <legend>Payment method</legend>
+      <label class="pay-option"><input type="radio" name="pay" value="cod" checked> 💵 Cash on Delivery <small>(mock)</small></label>
+      <label class="pay-option"><input type="radio" name="pay" value="upi"> 📱 UPI <small>(mock — no real charge)</small></label>
+    </fieldset>
+    <div id="upiMock" class="upi-mock" hidden>
+      <p>Demo UPI screen — in the real store you'd scan/pay here. <strong>Nothing is charged in this demo.</strong></p>
+      <input name="upiId" placeholder="yourname@upi (demo only)">
+    </div>
+    <div id="orderSummary" class="order-summary"></div>
+    <p id="formError" class="error" role="alert" hidden></p>
+    <div class="row-actions">
+      <button type="button" id="backToCart" class="btn ghost">← Back to cart</button>
+      <button type="submit" class="btn primary">Place demo order</button>
+    </div>
+  </form>
+</main>
+
+<main id="view-confirm" class="view">
+  <div class="confirm-card">
+    <div class="confirm-icon">✅</div>
+    <h2>Order placed! <small>(demo)</small></h2>
+    <p class="order-id">Order ID: <strong id="orderId">—</strong></p>
+    <p class="muted">This is a demo order — no items will be delivered and no money moves.</p>
+  </div>
+  <h3>Order status <small>(demo timeline)</small></h3>
+  <ol id="statusTimeline" class="timeline"></ol>
+  <div class="row-actions">
+    <button id="simulateBtn" class="btn ghost">▶ Simulate progress (demo)</button>
+    <button id="newOrderBtn" class="btn primary">Start new demo order</button>
+  </div>
+</main>
+
+<!-- Cart drawer (mobile quick view) -->
+<aside id="cartDrawer" class="drawer" aria-hidden="true" aria-label="Cart preview">
+  <div class="drawer-head"><strong>Cart</strong><button id="closeDrawer" aria-label="Close cart">✕</button></div>
+  <div id="drawerItems" class="drawer-items"></div>
+  <div class="drawer-foot"><button id="drawerCheckout" class="btn primary full">Checkout →</button></div>
+</aside>
+<div id="drawerBackdrop" class="backdrop" hidden></div>
+
+<footer class="app-footer">
+  <p>VQ Grocery · prototype storefront · All data on this page is fictional demo data.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

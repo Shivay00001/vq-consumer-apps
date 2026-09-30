@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VQ Food — Demo Food Delivery</title>
+<meta name="description" content="VQ Food demo: browse demo restaurants and menus, try cart, checkout and a simulated order-tracking demo. No real restaurants or payments.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand"><span class="brand-icon">🍔</span><div><strong>VQ Food</strong><small>demo food delivery</small></div></div>
+    <button id="cartBtn" class="cart-btn" aria-label="Open cart">🛒 <span id="cartCount" class="cart-count">0</span></button>
+  </div>
+  <p class="demo-banner">🧪 Demo build — restaurant browsing, cart &amp; checkout are real UI, but there are <strong>no real restaurants, no real riders, and no real payments</strong>. Tracking below is a simulation.</p>
+</header>
+
+<main id="view-list" class="view active">
+  <section class="search-bar">
+    <input id="searchInput" type="search" placeholder="Search restaurants or dishes… (demo)" aria-label="Search restaurants">
+  </section>
+
+  <!-- AdSense paste point: restaurant listing, top -->
+  <div class="ad-slot" data-ad="food-listing-top" role="complementary" aria-label="Advertisement">
+    <!-- PASTE YOUR ADSENSE AD UNIT CODE HERE (food listing top) -->
+    <span>Advertisement</span>
+  </div>
+
+  <nav id="cuisineChips" class="chips" aria-label="Cuisines"></nav>
+  <section id="restaurantList" class="rest-list" aria-live="polite"></section>
+  <p id="emptyState" class="empty-state" hidden>No demo restaurants match.</p>
+
+  <!-- AdSense paste point: restaurant listing, bottom -->
+  <div class="ad-slot" data-ad="food-listing-bottom" role="complementary" aria-label="Advertisement">
+    <!-- PASTE YOUR ADSENSE AD UNIT CODE HERE (food listing bottom) -->
+    <span>Advertisement</span>
+  </div>
+</main>
+
+<main id="view-menu" class="view">
+  <button id="backToList" class="btn ghost small">← All restaurants</button>
+  <section id="restHero" class="rest-hero"></section>
+  <div class="veg-toggle"><label><input type="checkbox" id="vegOnly"> Veg only</label></div>
+  <section id="menuList" class="menu-list"></section>
+</main>
+
+<main id="view-checkout" class="view">
+  <h2>Checkout <small>(demo — no real payment)</small></h2>
+  <form id="checkoutForm" class="form" novalidate>
+    <label>Full name<input name="name" required placeholder="e.g. Shivay" autocomplete="name"></label>
+    <label>Phone<input name="phone" required inputmode="tel" placeholder="10-digit mobile" pattern="[0-9]{10}" autocomplete="tel"></label>
+    <label>Delivery address<textarea name="address" required rows="3" placeholder="House no, street, area, city, PIN"></textarea></label>
+    <fieldset class="pay-choice">
+      <legend>Payment method</legend>
+      <label class="pay-option"><input type="radio" name="pay" value="cod" checked> 💵 Cash on Delivery <small>(mock)</small></label>
+      <label class="pay-option"><input type="radio" name="pay" value="upi"> 📱 UPI <small>(mock — no real charge)</small></label>
+    </fieldset>
+    <div id="orderSummary" class="order-summary"></div>
+    <p id="formError" class="error" role="alert" hidden></p>
+    <div class="row-actions">
+      <button type="button" id="backToMenu" class="btn ghost">← Back</button>
+      <button type="submit" class="btn primary">Place demo order</button>
+    </div>
+  </form>
+</main>
+
+<main id="view-track" class="view">
+  <div class="confirm-card">
+    <div class="confirm-icon">🛵</div>
+    <h2>Order placed! <small>(demo)</small></h2>
+    <p class="order-id">Order ID: <strong id="orderId">—</strong></p>
+    <p class="muted">Simulated tracking below — <strong>no real restaurant received this order and no rider exists.</strong></p>
+  </div>
+  <h3>Live-looking tracking <small>(demo simulation)</small></h3>
+  <ol id="trackTimeline" class="timeline"></ol>
+  <div class="rider-card" id="riderCard" aria-live="polite"></div>
+  <div class="row-actions">
+    <button id="replayBtn" class="btn ghost">↻ Replay simulation</button>
+    <button id="newOrderBtn" class="btn primary">Order something else (demo)</button>
+  </div>
+</main>
+
+<aside id="cartDrawer" class="drawer" aria-hidden="true" aria-label="Cart preview">
+  <div class="drawer-head"><strong>Cart</strong><button id="closeDrawer" aria-label="Close cart">✕</button></div>
+  <div id="drawerItems" class="drawer-items"></div>
+  <div class="drawer-foot"><button id="drawerCheckout" class="btn primary full">Checkout →</button></div>
+</aside>
+<div id="drawerBackdrop" class="backdrop" hidden></div>
+
+<footer class="app-footer">
+  <p>VQ Food · prototype · All restaurants, menus and prices on this page are fictional demo data.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

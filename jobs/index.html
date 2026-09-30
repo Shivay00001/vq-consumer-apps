@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VQ Jobs — Find work & hire</title>
+<meta name="description" content="VQ Jobs: browse job listings, apply as a candidate, or post a job as an employer. Supabase-backed when configured, demo mode otherwise.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand"><span class="brand-icon">💼</span><div><strong>VQ Jobs</strong><small id="modeLabel">checking mode…</small></div></div>
+    <nav class="topnav">
+      <button class="navbtn active" data-view="browse">Jobs</button>
+      <button class="navbtn" data-view="post">Post a job</button>
+    </nav>
+  </div>
+  <p id="modeBanner" class="mode-banner">…</p>
+</header>
+
+<main class="wrap">
+  <!-- ============ BROWSE VIEW ============ -->
+  <section id="view-browse" class="view active">
+    <div class="search-bar">
+      <input id="searchInput" type="search" placeholder="Search by title, company or keyword…" aria-label="Search jobs">
+    </div>
+    <div class="filters">
+      <select id="locationFilter" aria-label="Filter by location"><option value="">All locations</option></select>
+      <select id="typeFilter" aria-label="Filter by job type">
+        <option value="">All types</option>
+        <option value="full-time">Full-time</option>
+        <option value="part-time">Part-time</option>
+        <option value="contract">Contract</option>
+        <option value="internship">Internship</option>
+      </select>
+      <label class="remote-check"><input type="checkbox" id="remoteFilter"> Remote only</label>
+    </div>
+
+    <!-- AdSense paste point: job listings, top -->
+    <div class="ad-slot" data-ad="jobs-listing-top" role="complementary" aria-label="Advertisement">
+      <!-- PASTE YOUR ADSENSE AD UNIT CODE HERE (jobs listing top) -->
+      <span>Advertisement</span>
+    </div>
+
+    <p id="resultMeta" class="muted"></p>
+    <div id="jobList" class="job-list" aria-live="polite"></div>
+    <p id="emptyState" class="empty-state" hidden>No jobs match your filters.</p>
+
+    <!-- AdSense paste point: job listings, bottom -->
+    <div class="ad-slot" data-ad="jobs-listing-bottom" role="complementary" aria-label="Advertisement">
+      <!-- PASTE YOUR ADSENSE AD UNIT CODE HERE (jobs listing bottom) -->
+      <span>Advertisement</span>
+    </div>
+  </section>
+
+  <!-- ============ JOB DETAIL VIEW ============ -->
+  <section id="view-detail" class="view">
+    <button id="backToBrowse" class="btn ghost small">← All jobs</button>
+    <article id="jobDetail" class="detail-card"></article>
+    <h3>Apply for this role</h3>
+    <form id="applyForm" class="form" novalidate>
+      <div class="form-grid">
+        <label>Full name<input name="name" required placeholder="Your name" autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required placeholder="you@example.com" autocomplete="email"></label>
+        <label>Phone<input name="phone" inputmode="tel" placeholder="10-digit mobile (optional)" autocomplete="tel"></label>
+        <label>Resume link<input name="resume" type="url" placeholder="https://… link to your resume (optional)"></label>
+      </div>
+      <label>Cover note<textarea name="cover" rows="4" placeholder="2–3 lines on why you're a fit (optional)"></textarea></label>
+      <p id="applyMsg" class="form-msg" role="status" hidden></p>
+      <button type="submit" class="btn primary">Submit application</button>
+    </form>
+  </section>
+
+  <!-- ============ POST A JOB VIEW ============ -->
+  <section id="view-post" class="view">
+    <h2>Post a job <small id="postModeNote"></small></h2>
+    <form id="postForm" class="form" novalidate>
+      <div class="form-grid">
+        <label>Company name<input name="company" required placeholder="e.g. VisionQuantech"></label>
+        <label>Contact email<input name="contactEmail" type="email" placeholder="hiring@company.com (optional)"></label>
+        <label>Role title<input name="title" required placeholder="e.g. Frontend Developer"></label>
+        <label>Location<input name="location" required placeholder="e.g. Mumbai / Remote"></label>
+        <label>Job type
+          <select name="type">
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+            <option value="contract">Contract</option>
+            <option value="internship">Internship</option>
+          </select>
+        </label>
+        <label>Salary<input name="salary" placeholder="e.g. ₹8–12 LPA (optional)"></label>
+      </div>
+      <label class="remote-check"><input type="checkbox" name="remote"> This is a remote role</label>
+      <label>Job description<textarea name="description" rows="6" required placeholder="Responsibilities, requirements, how to apply…"></textarea></label>
+      <p id="postMsg" class="form-msg" role="status" hidden></p>
+      <button type="submit" class="btn primary">Publish job</button>
+    </form>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>VQ Jobs · <span id="footMode">demo mode</span> · Job data is fictional until Supabase is connected.</p>
+</footer>
+
+<!-- The ONE allowed external script: Supabase client. Only used when supabase-config.js is filled in. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+/* VQ Grocery — mobile-first styles. Self-contained, no frameworks. */
+
+:root{
+  --green:#1f9d55; --green-dark:#157a41; --green-soft:#e8f7ee;
+  --ink:#1c2430; --muted:#6b7686; --line:#e6ebf0; --bg:#f7f9f7; --card:#ffffff;
+  --amber:#f5a623; --red:#d64545; --radius:14px;
+  --shadow:0 2px 10px rgba(20,40,25,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+h2 small,h3 small{font-weight:400;color:var(--muted);font-size:.65em}
+.muted{color:var(--muted);font-size:.9rem}
+.error{color:var(--red);font-size:.9rem}
+
+/* Header */
+.app-header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.header-inner{max-width:960px;margin:0 auto;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:.6rem;align-items:center}
+.brand-icon{font-size:1.8rem}
+.brand strong{display:block;font-size:1.15rem}
+.brand small{color:var(--muted)}
+.cart-btn{position:relative;background:var(--green-soft);border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;font-size:1.05rem;cursor:pointer}
+.cart-count{position:absolute;top:-6px;right:-4px;background:var(--green);color:#fff;font-size:.72rem;font-weight:700;min-width:1.35rem;height:1.35rem;border-radius:999px;display:flex;align-items:center;justify-content:center;padding:0 .25rem}
+.demo-banner{margin:0;padding:.55rem 1rem;background:#fff8e1;color:#7a5b00;font-size:.82rem;border-top:1px dashed #e8d48a;text-align:center}
+
+/* Views */
+.view{display:none;max-width:960px;margin:0 auto;padding:1rem}
+.view.active{display:block}
+
+/* Search + chips */
+.search-bar input{width:100%;padding:.8rem 1rem;border:1px solid var(--line);border-radius:var(--radius);font-size:1rem;background:#fff}
+.chips{display:flex;gap:.5rem;overflow-x:auto;padding:.8rem 0;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.45rem .9rem;font-size:.9rem;cursor:pointer}
+.chip.active{background:var(--green);border-color:var(--green);color:#fff;font-weight:600}
+
+/* Offers */
+.offers{display:grid;gap:.5rem;margin-bottom:1rem}
+.offer{background:linear-gradient(135deg,#e8f7ee,#d9f0e3);border:1px dashed var(--green);border-radius:var(--radius);padding:.6rem .9rem;font-size:.88rem}
+
+/* Product grid */
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+@media(min-width:640px){.product-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.product-grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:.8rem;display:flex;flex-direction:column;gap:.35rem}
+.card .p-icon{font-size:2.4rem;text-align:center;background:var(--green-soft);border-radius:10px;padding:.5rem}
+.card h3{margin:.2rem 0 0;font-size:.95rem}
+.card .unit{color:var(--muted);font-size:.78rem}
+.card .stars{color:var(--amber);font-size:.8rem}
+.price-row{display:flex;align-items:baseline;gap:.45rem;margin-top:auto}
+.price{font-weight:700;font-size:1.05rem}
+.mrp{color:var(--muted);text-decoration:line-through;font-size:.82rem}
+.off{color:var(--green-dark);font-size:.78rem;font-weight:600}
+.qty-row{display:flex;align-items:center;justify-content:space-between;margin-top:.4rem}
+.add-btn{background:var(--green);color:#fff;border:none;border-radius:10px;padding:.45rem .9rem;font-weight:600;cursor:pointer;width:100%}
+.add-btn:hover{background:var(--green-dark)}
+.stepper{display:flex;align-items:center;gap:.6rem;background:var(--green-soft);border-radius:10px;padding:.2rem}
+.stepper button{width:1.9rem;height:1.9rem;border-radius:8px;border:1px solid var(--line);background:#fff;font-size:1.1rem;cursor:pointer}
+.stepper b{min-width:1.4rem;text-align:center}
+
+/* Cart */
+.cart-line{display:flex;gap:.8rem;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:.7rem;margin-bottom:.6rem}
+.cart-line .p-icon{font-size:1.8rem;background:var(--green-soft);border-radius:10px;padding:.4rem}
+.cart-line .grow{flex:1}
+.cart-line .grow strong{display:block;font-size:.95rem}
+.cart-line .grow span{color:var(--muted);font-size:.8rem}
+.cart-summary{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:.9rem;margin-top:.6rem}
+.cart-summary .row{display:flex;justify-content:space-between;padding:.25rem 0;font-size:.95rem}
+.cart-summary .row.total{font-weight:700;font-size:1.1rem;border-top:1px solid var(--line);margin-top:.4rem;padding-top:.6rem}
+.row-actions{display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap}
+.btn{border:none;border-radius:12px;padding:.8rem 1.2rem;font-size:1rem;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--green);color:#fff;flex:1}
+.btn.primary:hover{background:var(--green-dark)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn.full{width:100%}
+.empty-state{text-align:center;color:var(--muted);padding:2rem 1rem}
+
+/* Forms */
+.form{display:grid;gap:.9rem;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1rem}
+.form label{display:grid;gap:.35rem;font-size:.9rem;font-weight:600}
+.form input,.form textarea{padding:.75rem;border:1px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit}
+.pay-choice{border:1px solid var(--line);border-radius:10px;padding:.8rem;display:grid;gap:.6rem}
+.pay-option{display:flex;gap:.6rem;align-items:center;font-weight:500;border:1px solid var(--line);border-radius:10px;padding:.6rem;cursor:pointer}
+.pay-option small{color:var(--muted)}
+.upi-mock{background:#fff8e1;border:1px dashed #e8d48a;border-radius:10px;padding:.8rem;font-size:.9rem}
+.order-summary{background:var(--green-soft);border-radius:10px;padding:.8rem;font-size:.92rem}
+
+/* Confirmation + timeline */
+.confirm-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem;text-align:center;box-shadow:var(--shadow);margin-bottom:1rem}
+.confirm-icon{font-size:2.6rem}
+.order-id{font-size:1.05rem}
+.timeline{list-style:none;margin:0 0 1rem;padding:0}
+.timeline li{position:relative;padding:0 0 1.2rem 2rem;color:var(--muted)}
+.timeline li::before{content:"○";position:absolute;left:0;top:-2px;font-size:1.3rem}
+.timeline li::after{content:"";position:absolute;left:.62rem;top:1.5rem;bottom:0;width:2px;background:var(--line)}
+.timeline li:last-child::after{display:none}
+.timeline li.done{color:var(--ink)}
+.timeline li.done::before{content:"●";color:var(--green)}
+.timeline li .t-time{display:block;font-size:.78rem;color:var(--muted)}
+
+/* Drawer */
+.drawer{position:fixed;top:0;right:-100%;width:min(92vw,380px);height:100dvh;background:#fff;z-index:40;transition:right .25s ease;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.12)}
+.drawer.open{right:0}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:1rem;border-bottom:1px solid var(--line)}
+.drawer-head button{background:none;border:none;font-size:1.2rem;cursor:pointer}
+.drawer-items{flex:1;overflow-y:auto;padding:1rem}
+.drawer-foot{padding:1rem;border-top:1px solid var(--line)}
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:30}
+
+/* Ad slots */
+.ad-slot{margin:.9rem 0;min-height:70px;border:1px dashed #b9c4d0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#8a95a5;font-size:.8rem;background:#f1f4f7}
+
+.app-footer{text-align:center;color:var(--muted);font-size:.8rem;padding:1.5rem 1rem}
